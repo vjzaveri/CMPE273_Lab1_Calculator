@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">	
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="angularjs/calculator.js"></script>
+  </head>
+  <body>
+  <div class="container-fluid" ng-app="calculator" ng-controller="calculate">
+  	<!--<input type="text" name="result" ng-model="result" value={{result}}>-->
+  	<p>{{result | number:2}}</p>
+  	<input type="text" name="input" ng-model="input" value={{input}}>
+  	<button ng-click="add();">+</button>
+  	<button ng-click="subtract();">-</button>
+  	<button ng-click="multiply();">*</button>
+  	<button ng-click="divide();">/</button>
+  	<button ng-click="calculate();">Calculate</button>
+  	<button ng-click="buttonPressed(1);">1</button>
+  	<button ng-click="buttonPressed(2);">2</button>
+  	<button ng-click="buttonPressed(3);">3</button>
+  	<button ng-click="buttonPressed(4);">4</button>
+  	<button ng-click="buttonPressed(5);">5</button>
+  	<button ng-click="buttonPressed(6);">6</button>
+  	<button ng-click="buttonPressed(7);">7</button>
+  	<button ng-click="buttonPressed(8);">8</button>
+  	<button ng-click="buttonPressed(9);">9</button>
+  	<button ng-click="buttonPressed(0);">0</button>
+    <button ng-click="buttonPressed('.');">.</button>
+    <button ng-click="reset();">C</button>
+    <button ng-click="delete();">DEL</button>
+    <div ng-hide="error">Can't divide by ZERO</div>
+    <div ng-hide="otherError">Invalid Operation</div>
+  </div>
+  </body>
+</html>
