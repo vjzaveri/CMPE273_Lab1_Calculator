@@ -19,15 +19,67 @@
 
 
 
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
+
         <!--<div class="panel panel-info">
           <div class="panel-heading">
             <h4 class="panel-title"><span class="glyphicon glyphicon-th"></span> Calculator</h4>
-          </div>-->
+          </div>
+
+
+          <span>{{result | number:2}}</span><br>-->
         <!--  <div class="panel-body">-->
-        <div class="row"><h4 class="panel-title"><span class="glyphicon glyphicon-th"></span> Calculator</h4></div>
+
+        <div class="row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+        <div style="align-content: center;">
+        <div class="row"><h2 style="padding-left: 20px;"><span class="glyphicon glyphicon-th"></span> Calculator</h2></div>
+
+
+        
+        <input style="text-align: right; width: 390px; font-size: 200%; border: none;" width="400px" type="text" name="input" ng-model="result" value={{result | number:2}} readonly=""><br>
+        <input style="text-align: right; width: 390px; font-size: 200%; border: none;" width="400px" type="text" name="input" ng-model="operation" value={{operation}} readonly=""><br>
+        <input style="text-align: right; width: 390px; font-size: 200%;" width="400px" type="text" name="input" ng-model="input" value={{input}} readonly=""><br>
+
+
+        <button class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;" ng-click="buttonPressed(7);"><h3 style="font-weight: bold;">7</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(8);"><h3 style="font-weight: bold;">8</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(9);"><h3 style="font-weight: bold;">9</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="delete();"><h3 style="font-weight: bold;">DEL</h3></button>
+        <button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="reset();"><h3 style="font-weight: bold;">C</h3></button>
+        <br>
+
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(4);"><h3 style="font-weight: bold;">4</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(5);"><h3 style="font-weight: bold;">5</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(6);"><h3 style="font-weight: bold;">6</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="multiply();"><h3 style="font-weight: bold;">*</h3></button>
+        <button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="divide();"><h3 style="font-weight: bold;">/</h3></button>
+        </br>
+
+
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(1);"><h3 style="font-weight: bold;">1</h3></button>
+        <button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(2);"><h3 style="font-weight: bold;">2</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(3);"><h3 style="font-weight: bold;">3</h3></button>
+        <button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="subtract();"><h3 style="font-weight: bold;">-</h3></button>
+        <button  class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="add();"><h3 style="font-weight: bold;">+</h3></button>
+        <br>
+
+        <button class="btn btn-default"  style="width: 154px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(0);"><h3 style="font-weight: bold;">0</h3></button>
+        <button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed('.');"><h3 style="font-weight: bold;">.</h3></button>
+        <button  class="btn btn-info" style="width: 154px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="calculate();"><h3 style="font-weight: bold;">Calculate</h3></button>
+        <br>
+
+        <div class="alert alert-danger" ng-hide="error">Can't divide by ZERO</div>
+        <div class="alert alert-danger" ng-hide="otherError">Invalid Operation</div>
+        </div>
+
+
+
+</div>
+        </div>
+        <div class="col-md-3"></div>
+<!--
             <div class="row">
               <div class="col-md-10 "><span class="pull-right">{{result | number:2}}</span></div>
             </div>
@@ -37,46 +89,44 @@
             </div>
             <div class="row">
             <div class="col-md-1"></div>
-              <div class="col-md-2"><button class="btn btn-default" style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;" ng-click="buttonPressed(7);">7</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(8);">8</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(9);">9</button></div>
+              <div class="col-md-2"><button class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;" ng-click="buttonPressed(7);">7</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(8);">8</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(9);">9</button></div>
               
               
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="delete();">DEL</button></div>
-              <div class="col-md-2"><button  class="btn btn-default" style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="reset();">C</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="delete();">DEL</button></div>
+              <div class="col-md-2"><button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="reset();">C</button></div>
               <div class="col-md-1"></div>
             </div>
             <div class="row">
             <div class="col-md-1"></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(4);">4</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(5);">5</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(6);">6</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="multiply();">*</button></div>
-              <div class="col-md-2"><button  class="btn btn-default" style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="divide();">/</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(4);">4</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(5);">5</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(6);">6</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="multiply();">*</button></div>
+              <div class="col-md-2"><button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="divide();">/</button></div>
               <div class="col-md-1"></div>
             </div>
             <div class="row">
             <div class="col-md-1"></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(1);">1</button></div>
-              <div class="col-md-2"><button  class="btn btn-default" style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(2);">2</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(3);">3</button></div>
-              <div class="col-md-2"><button  class="btn btn-default" style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="subtract();">-</button></div>
-              <div class="col-md-2"><button  class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="add();">+</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(1);">1</button></div>
+              <div class="col-md-2"><button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(2);">2</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(3);">3</button></div>
+              <div class="col-md-2"><button  class="btn btn-default" style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="subtract();">-</button></div>
+              <div class="col-md-2"><button  class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="add();">+</button></div>
               
               <div class="col-md-1"></div>
             </div>
             <div class="row">
             <div class="col-md-1"></div>
-              <div class="col-md-4"><button class="btn btn-default"  style="width: 210px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(0);">0</button></div>
-              <div class="col-md-2"><button class="btn btn-default"  style="width: 105px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed('.');">.</button></div>
-              <div class="col-md-2"><button  class="btn btn-default" style="width: 210px; height: 105px; padding: 0px 0px 0px 0px;"  ng-click="calculate();">Calculate</button></div>
+              <div class="col-md-4"><button class="btn btn-default"  style="width: 210px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed(0);">0</button></div>
+              <div class="col-md-2"><button class="btn btn-default"  style="width: 75px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="buttonPressed('.');">.</button></div>
+              <div class="col-md-2"><button  class="btn btn-default" style="width: 210px; height: 75px; padding: 0px 0px 0px 0px;"  ng-click="calculate();">Calculate</button></div>
               <div class="col-md-1"></div>
             </div>
-         <!-- </div>-->
+          </div>
         </div>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
+
 
 
 
@@ -102,7 +152,7 @@
     <button ng-click="reset();">C</button>
     <button ng-click="delete();">DEL</button>
     <div ng-hide="error">Can't divide by ZERO</div>
-    <div ng-hide="otherError">Invalid Operation</div>
+    <div ng-hide="otherError">Invalid Operation</div>-->
   </div>
   </body>
 </html>

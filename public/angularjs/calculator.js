@@ -3,7 +3,7 @@ var calculator = angular.module('calculator',[]);
 calculator.controller('calculate',function($scope, $http){
 	$scope.result=0;
 	$scope.input="0";
-	$scope.operation;
+	$scope.operation="+";
 	$scope.otherError=true;
 	$scope.error=true;
 	$scope.calculate = function(){
